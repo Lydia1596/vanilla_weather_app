@@ -1,3 +1,10 @@
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
 .card {
   position: relative;
   top: 10px;
