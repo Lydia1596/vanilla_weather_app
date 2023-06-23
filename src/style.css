@@ -45,6 +45,7 @@ body {
   position: relative;
   top: -35px;
   color: #212529;
+  text-decoration: none;
 }
 .city {
   max-height: 200px;
