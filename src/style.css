@@ -89,6 +89,10 @@ body {
 #description {
   text-transform: capitalize;
 }
+footer {
+  text-align: center;
+  font-weight: bold;
+}
 #geo-location-button {
   top: -35px;
   right: -368px;
@@ -101,6 +105,9 @@ body {
 #geo-location-button:hover {
   border: solid #46185f;
   border-width: 1px;
+}
+.github-link {
+  color: #212529;
 }
 h1 {
   margin-top: 100px;
