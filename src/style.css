@@ -110,6 +110,7 @@ h1 {
   font-size: 50px;
   font-weight: bolder;
   text-align: left;
+  text-transform: capitalize;
 }
 h2 {
   font-size: 50px;
