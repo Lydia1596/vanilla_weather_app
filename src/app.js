@@ -21,17 +21,17 @@ let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = `${day} ${hour}:${minute}`;
 
 function currentCityTemp(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celciusTemp = Math.round(response.data.main.temp);
   let humid = Math.round(response.data.main.humidity);
   let windy = Math.round(response.data.wind.speed);
   let condition = response.data.weather[0].description;
   let emoji = response.data.weather[0].icon;
-  let temp = document.querySelector("#current-temp");
+  let temperature = document.querySelector("#current-temp");
   let humidity = document.querySelector("#precipitation");
   let wind = document.querySelector("#wind");
   let description = document.querySelector("#description");
   let icon = document.querySelector("#icon");
-  temp.innerHTML = `${temperature}`;
+  temperature.innerHTML = celciusTemp;
   humidity.innerHTML = `${humid}`;
   wind.innerHTML = `${windy}`;
   description.innerHTML = `${condition}`;
@@ -50,20 +50,20 @@ function citySearch(event) {
 }
 
 function changeHeader(response) {
+  celciusTemp = Math.round(response.data.main.temp);
+  let city = response.data.name;
+  let humid = Math.round(response.data.main.humidity);
+  let windy = Math.round(response.data.wind.speed);
+  let condition = response.data.weather[0].description;
+  let emoji = response.data.weather[0].icon;
   let h1 = document.querySelector("#current-city");
   let temperature = document.querySelector("#current-temp");
   let humidity = document.querySelector("#precipitation");
   let wind = document.querySelector("#wind");
   let description = document.querySelector("#description");
   let icon = document.querySelector("#icon");
-  let temp = Math.round(response.data.main.temp);
-  let city = response.data.name;
-  let humid = Math.round(response.data.main.humidity);
-  let windy = Math.round(response.data.wind.speed);
-  let condition = response.data.weather[0].description;
-  let emoji = response.data.weather[0].icon;
   h1.innerHTML = `${city}`;
-  temperature.innerHTML = `${temp}`;
+  temperature.innerHTML = celciusTemp;
   humidity.innerHTML = `${humid}`;
   wind.innerHTML = `${windy}`;
   description.innerHTML = `${condition}`;
@@ -90,15 +90,18 @@ form.addEventListener("submit", citySearch);
 function changeToCelcius(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temp");
-  currentTemperature.innerHTML = "18";
+  currentTemperature.innerHTML = celciusTemp;
 }
-function changeToFarenheit(event) {
+function changeToFahrenheit(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temp");
-  currentTemperature.innerHTML = "64";
+  let fahrenheit = (celciusTemp * 9) / 5 + 32;
+  currentTemperature.innerHTML = Math.round(fahrenheit);
 }
+let celciusTemp = null;
+
 let celciusButton = document.querySelector("#celcius");
 celciusButton.addEventListener("click", changeToCelcius);
 
-let farenheitButton = document.querySelector("#farenheit");
-farenheitButton.addEventListener("click", changeToFarenheit);
+let fahrenheitButton = document.querySelector("#fahrenheit");
+fahrenheitButton.addEventListener("click", changeToFahrenheit);
