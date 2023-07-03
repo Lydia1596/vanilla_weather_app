@@ -25,14 +25,17 @@ function currentCityTemp(response) {
   let humid = Math.round(response.data.main.humidity);
   let windy = Math.round(response.data.wind.speed);
   let condition = response.data.weather[0].description;
+  let emoji = response.data.weather[0].icon;
   let temp = document.querySelector("#current-temp");
   let humidity = document.querySelector("#precipitation");
   let wind = document.querySelector("#wind");
   let description = document.querySelector("#description");
+  let icon = document.querySelector("#icon");
   temp.innerHTML = `${temperature}`;
   humidity.innerHTML = `${humid}`;
   wind.innerHTML = `${windy}`;
   description.innerHTML = `${condition}`;
+  icon.innerHTML = `${emoji}`;
 }
 
 function citySearch(event) {
