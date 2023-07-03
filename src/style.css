@@ -1,3 +1,6 @@
+.active {
+  font-weight: bold;
+}
 body {
   font-family: "Raleway", sans-serif;
   background-color: white;
@@ -84,6 +87,13 @@ body {
 }
 #description {
   text-transform: capitalize;
+}
+#divider {
+  color: #212529;
+  font-size: 20px;
+  position: relative;
+  top: -35px;
+  text-decoration: none;
 }
 footer {
   text-align: center;

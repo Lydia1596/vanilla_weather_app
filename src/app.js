@@ -91,12 +91,16 @@ function changeToCelcius(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temp");
   currentTemperature.innerHTML = celciusTemp;
+  celciusButton.classList.add("active");
+  fahrenheitButton.classList.remove("active");
 }
 function changeToFahrenheit(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temp");
   let fahrenheit = (celciusTemp * 9) / 5 + 32;
   currentTemperature.innerHTML = Math.round(fahrenheit);
+  celciusButton.classList.remove("active");
+  fahrenheitButton.classList.add("active");
 }
 let celciusTemp = null;
 
