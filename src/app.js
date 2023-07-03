@@ -36,6 +36,7 @@ function currentCityTemp(response) {
   wind.innerHTML = `${windy}`;
   description.innerHTML = `${condition}`;
   icon.setAttribute("src", `https://openweathermap.org/img/wn/${emoji}@2x.png`);
+  icon.setAttribute("alt", condition);
 }
 
 function citySearch(event) {
@@ -67,6 +68,7 @@ function changeHeader(response) {
   wind.innerHTML = `${windy}`;
   description.innerHTML = `${condition}`;
   icon.setAttribute("src", `https://openweathermap.org/img/wn/${emoji}@2x.png`);
+  icon.setAttribute("alt", condition);
 }
 function myLocation(position) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
