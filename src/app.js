@@ -1,25 +1,3 @@
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hours}`;
-}
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = `0${minute}`;
-}
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = `${day} ${hour}:${minute}`;
-
 function currentCityTemp(response) {
   celciusTemp = Math.round(response.data.main.temp);
   let humid = Math.round(response.data.main.humidity);
@@ -70,6 +48,7 @@ function changeHeader(response) {
   icon.setAttribute("src", `https://openweathermap.org/img/wn/${emoji}@2x.png`);
   icon.setAttribute("alt", condition);
 }
+
 function myLocation(position) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let lat = position.coords.latitude;
@@ -77,15 +56,11 @@ function myLocation(position) {
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(url).then(changeHeader);
 }
+
 function clickButton(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(myLocation);
 }
-let button = document.querySelector("#geo-location-button");
-button.addEventListener("click", clickButton);
-
-let form = document.querySelector("#city-search-form");
-form.addEventListener("submit", citySearch);
 
 function changeToCelcius(event) {
   event.preventDefault();
@@ -94,6 +69,7 @@ function changeToCelcius(event) {
   celciusButton.classList.add("active");
   fahrenheitButton.classList.remove("active");
 }
+
 function changeToFahrenheit(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temp");
@@ -102,6 +78,34 @@ function changeToFahrenheit(event) {
   celciusButton.classList.remove("active");
   fahrenheitButton.classList.add("active");
 }
+
+let button = document.querySelector("#geo-location-button");
+button.addEventListener("click", clickButton);
+
+let form = document.querySelector("#city-search-form");
+form.addEventListener("submit", citySearch);
+
+let now = new Date();
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let day = days[now.getDay()];
+let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hours}`;
+}
+let minute = now.getMinutes();
+if (minute < 10) {
+  minute = `0${minute}`;
+}
+let currentTime = document.querySelector("#current-time");
+currentTime.innerHTML = `${day} ${hour}:${minute}`;
 let celciusTemp = null;
 
 let celciusButton = document.querySelector("#celcius");
