@@ -53,10 +53,6 @@ body {
   position: relative;
   top: 10px;
 }
-.cloud {
-  position: relative;
-  top: -30px;
-}
 #current-city {
   position: relative;
   top: -80px;
@@ -118,6 +114,10 @@ h1 {
 h2 {
   font-size: 50px;
   text-align: left;
+}
+#id {
+  position: relative;
+  top: -30px;
 }
 .main-display {
   margin: 0 auto;

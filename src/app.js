@@ -35,7 +35,7 @@ function currentCityTemp(response) {
   humidity.innerHTML = `${humid}`;
   wind.innerHTML = `${windy}`;
   description.innerHTML = `${condition}`;
-  icon.innerHTML = `${emoji}`;
+  icon.setAttribute("src", `https://openweathermap.org/img/wn/${emoji}@2x.png`);
 }
 
 function citySearch(event) {
@@ -54,16 +54,19 @@ function changeHeader(response) {
   let humidity = document.querySelector("#precipitation");
   let wind = document.querySelector("#wind");
   let description = document.querySelector("#description");
+  let icon = document.querySelector("#icon");
   let temp = Math.round(response.data.main.temp);
   let city = response.data.name;
   let humid = Math.round(response.data.main.humidity);
   let windy = Math.round(response.data.wind.speed);
   let condition = response.data.weather[0].description;
+  let emoji = response.data.weather[0].icon;
   h1.innerHTML = `${city}`;
   temperature.innerHTML = `${temp}`;
   humidity.innerHTML = `${humid}`;
   wind.innerHTML = `${windy}`;
   description.innerHTML = `${condition}`;
+  icon.setAttribute("src", `https://openweathermap.org/img/wn/${emoji}@2x.png`);
 }
 function myLocation(position) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
