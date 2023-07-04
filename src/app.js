@@ -11,7 +11,7 @@ let days = [
 let day = days[now.getDay()];
 let hour = now.getHours();
 if (hour < 10) {
-  hour = `0${hours}`;
+  hour = `0${hour}`;
 }
 let minute = now.getMinutes();
 if (minute < 10) {
@@ -44,7 +44,7 @@ function citySearch(event) {
   let cityInput = document.querySelector("#city-search-box");
   let h1 = document.querySelector("#current-city");
   let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
-  let url = `https://api.openweathermap.org/data/3.0/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
   h1.innerHTML = `${cityInput.value}`;
   axios.get(url).then(currentCityTemp);
 }
