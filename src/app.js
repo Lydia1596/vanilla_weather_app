@@ -1,9 +1,14 @@
 function displayForecast() {
   let forecast = document.querySelector("#weather-forecast");
-  forecast.innerHTML = `
-        <div class="row align-items-end">
+  let forecastHTML = `<div class="row align-items-end">`;
+
+  let days = ["Thur", "Fri", "Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
           <div class="col">
-            <strong>Mon</strong>
+            <strong>${day}</strong>
             <br />
             <span class="max-temp">20°C</span>
             <span class="min-temp">15°C</span>
@@ -14,8 +19,10 @@ function displayForecast() {
               width="90"
             />
           </div>
-        </div>
         `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
 }
 
 function currentCityTemp(response) {
