@@ -1,24 +1,22 @@
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
+function displayForecast() {
+  let forecast = document.querySelector("#weather-forecast");
+  forecast.innerHTML = `
+        <div class="row align-items-end">
+          <div class="col">
+            <strong>Mon</strong>
+            <br />
+            <span class="max-temp">20°C</span>
+            <span class="min-temp">15°C</span>
+            <br />
+            <img
+              src="https://openweathermap.org/img/wn/10d@2x.png"
+              alt=""
+              width="90"
+            />
+          </div>
+        </div>
+        `;
 }
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = `0${minute}`;
-}
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = `${day} ${hour}:${minute}`;
 
 function currentCityTemp(response) {
   celciusTemp = Math.round(response.data.main.temp);
@@ -84,12 +82,6 @@ function clickButton(event) {
   navigator.geolocation.getCurrentPosition(myLocation);
 }
 
-let button = document.querySelector("#geo-location-button");
-button.addEventListener("click", clickButton);
-
-let form = document.querySelector("#city-search-form");
-form.addEventListener("submit", citySearch);
-
 function changeToCelcius(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temp");
@@ -108,6 +100,36 @@ function changeToFahrenheit(event) {
 }
 
 let celciusTemp = null;
+
+displayForecast();
+
+let now = new Date();
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let day = days[now.getDay()];
+let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
+}
+let minute = now.getMinutes();
+if (minute < 10) {
+  minute = `0${minute}`;
+}
+let currentTime = document.querySelector("#current-time");
+currentTime.innerHTML = `${day} ${hour}:${minute}`;
+
+let button = document.querySelector("#geo-location-button");
+button.addEventListener("click", clickButton);
+
+let form = document.querySelector("#city-search-form");
+form.addEventListener("submit", citySearch);
 
 let celciusButton = document.querySelector("#celcius");
 celciusButton.addEventListener("click", changeToCelcius);
