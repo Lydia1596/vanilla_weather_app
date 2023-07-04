@@ -1,3 +1,25 @@
+let now = new Date();
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+let day = days[now.getDay()];
+let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hours}`;
+}
+let minute = now.getMinutes();
+if (minute < 10) {
+  minute = `0${minute}`;
+}
+let currentTime = document.querySelector("#current-time");
+currentTime.innerHTML = `${day} ${hour}:${minute}`;
+
 function currentCityTemp(response) {
   celciusTemp = Math.round(response.data.main.temp);
   let humid = Math.round(response.data.main.humidity);
@@ -62,6 +84,12 @@ function clickButton(event) {
   navigator.geolocation.getCurrentPosition(myLocation);
 }
 
+let button = document.querySelector("#geo-location-button");
+button.addEventListener("click", clickButton);
+
+let form = document.querySelector("#city-search-form");
+form.addEventListener("submit", citySearch);
+
 function changeToCelcius(event) {
   event.preventDefault();
   let currentTemperature = document.querySelector("#current-temp");
@@ -79,33 +107,6 @@ function changeToFahrenheit(event) {
   fahrenheitButton.classList.add("active");
 }
 
-let button = document.querySelector("#geo-location-button");
-button.addEventListener("click", clickButton);
-
-let form = document.querySelector("#city-search-form");
-form.addEventListener("submit", citySearch);
-
-let now = new Date();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let day = days[now.getDay()];
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hours}`;
-}
-let minute = now.getMinutes();
-if (minute < 10) {
-  minute = `0${minute}`;
-}
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = `${day} ${hour}:${minute}`;
 let celciusTemp = null;
 
 let celciusButton = document.querySelector("#celcius");
