@@ -1,4 +1,5 @@
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecast = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row align-items-end">`;
 
@@ -25,6 +26,12 @@ function displayForecast() {
   forecast.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "7784a4cd4aa2e0c25ead7bd96d585b8a";
+  let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric}`;
+  axios.get(url).then(displayForecast);
+}
+
 function currentCityTemp(response) {
   celciusTemp = Math.round(response.data.main.temp);
   let humid = Math.round(response.data.main.humidity);
@@ -42,6 +49,8 @@ function currentCityTemp(response) {
   description.innerHTML = `${condition}`;
   icon.setAttribute("src", `https://openweathermap.org/img/wn/${emoji}@2x.png`);
   icon.setAttribute("alt", condition);
+
+  getForecast(response.data.coord);
 }
 
 function citySearch(event) {
@@ -74,6 +83,8 @@ function changeHeader(response) {
   description.innerHTML = `${condition}`;
   icon.setAttribute("src", `https://openweathermap.org/img/wn/${emoji}@2x.png`);
   icon.setAttribute("alt", condition);
+
+  getForecast(response.data.coord);
 }
 
 function myLocation(position) {
@@ -107,8 +118,6 @@ function changeToFahrenheit(event) {
 }
 
 let celciusTemp = null;
-
-displayForecast();
 
 let now = new Date();
 let days = [
