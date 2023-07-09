@@ -43,14 +43,6 @@ body {
   border-color: black;
   max-height: 70px;
 }
-#celcius,
-#fahrenheit {
-  color: #212529;
-  font-size: 20px;
-  position: relative;
-  top: -35px;
-  text-decoration: none;
-}
 .city {
   max-height: 200px;
   position: relative;

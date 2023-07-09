@@ -109,25 +109,6 @@ function clickButton(event) {
   navigator.geolocation.getCurrentPosition(myLocation);
 }
 
-function changeToCelcius(event) {
-  event.preventDefault();
-  let currentTemperature = document.querySelector("#current-temp");
-  currentTemperature.innerHTML = celciusTemp;
-  celciusButton.classList.add("active");
-  fahrenheitButton.classList.remove("active");
-}
-
-function changeToFahrenheit(event) {
-  event.preventDefault();
-  let currentTemperature = document.querySelector("#current-temp");
-  let fahrenheit = (celciusTemp * 9) / 5 + 32;
-  currentTemperature.innerHTML = Math.round(fahrenheit);
-  celciusButton.classList.remove("active");
-  fahrenheitButton.classList.add("active");
-}
-
-let celciusTemp = null;
-
 let now = new Date();
 let days = [
   "Sunday",
@@ -155,9 +136,3 @@ button.addEventListener("click", clickButton);
 
 let form = document.querySelector("#city-search-form");
 form.addEventListener("submit", citySearch);
-
-let celciusButton = document.querySelector("#celcius");
-celciusButton.addEventListener("click", changeToCelcius);
-
-let fahrenheitButton = document.querySelector("#fahrenheit");
-fahrenheitButton.addEventListener("click", changeToFahrenheit);
