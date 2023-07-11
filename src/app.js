@@ -85,8 +85,8 @@ function changeHeader(response) {
   let city = response.data.city;
   let humid = Math.round(response.data.temperature.humidity);
   let windy = Math.round(response.data.wind.speed);
-  let condition = response.data.condition[0].description;
-  let emoji = response.data.condition[0].icon;
+  let condition = response.data.condition.description;
+  let emoji = response.data.condition.icon;
   let h1 = document.querySelector("#current-city");
   let temperature = document.querySelector("#current-temp");
   let humidity = document.querySelector("#precipitation");
@@ -109,8 +109,8 @@ function changeHeader(response) {
 
 function myLocation(position) {
   let apiKey = "34f2a007t4073b7ac44010a0e7f0b6co";
-  let lat = position.coordinates.latitude;
-  let lon = position.coordinates.longitude;
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
   let url = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   axios.get(url).then(changeHeader);
 }
