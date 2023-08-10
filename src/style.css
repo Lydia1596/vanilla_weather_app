@@ -4,7 +4,7 @@
 body {
   font-family: "Raleway", sans-serif;
   background-color: white;
-  background: url("images/weather-background.jpg") no-repeat fixed center;
+  background: url("images/weather-photo.jpg") no-repeat fixed center;
   background-size: cover;
   background-color: rgb(255, 255, 255);
   color: #212529;
