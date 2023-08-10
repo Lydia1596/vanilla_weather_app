@@ -10,6 +10,7 @@ body {
   display: block;
   margin: 0 auto;
   color: #212529;
+  background-repeat: no-repeat;
 }
 .body-container {
   max-width: 600px;
