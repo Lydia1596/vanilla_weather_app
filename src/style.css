@@ -7,8 +7,6 @@ body {
   background-image: url("images/weather-photo.jpg");
   background-position: center;
   background-size: cover;
-  display: block;
-  margin: 0 auto;
   color: #212529;
   background-repeat: no-repeat;
 }
